@@ -1,0 +1,25 @@
+spring:
+  application.name: passport-office
+  config.name: "${spring.application.name}"
+  liquibase:
+    change-log: 'classpath:/liquibase/db.changelog-master.xml'
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        ddl-auto: validate
+        default_batch_fetch_size: 100
+        batch_fetch_style: dynamic
+    open-in-view: false
+mdc:
+  processes:
+    - method-name: addPerson
+      process: ADD_PERSON
+    - method-name: deletePersonById
+      process: DELETE_PERSON_BY_ID
+    - method-name: deletePersonByPassportNum
+      process: DELETE_PERSON_BY_PASSPORT_NUM
+    - method-name: updatePerson
+      process: UPDATE_PERSON
+    - method-name: overwritingPerson
+      process: OVERWRITING_PERSON
